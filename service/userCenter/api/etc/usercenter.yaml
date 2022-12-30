@@ -1,0 +1,14 @@
+Name: userCenter
+Host: 0.0.0.0
+Port: 8801
+
+Mysql:
+  DataSource: root:123456@tcp(127.0.0.1:3306)/go_zero_tutorial?charset=utf8mb4&parseTime=true&loc=Asia%2FShanghai
+
+CacheRedis:
+  - Host: 127.0.0.1:6379
+
+Auth:
+  AccessSecret: dfajosfdjoaafda
+  # jwt token 有效期，单位：秒
+  AccessExpire: 7200

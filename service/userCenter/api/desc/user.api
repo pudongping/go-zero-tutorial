@@ -1,0 +1,23 @@
+syntax = "v1"
+
+info(
+	title: "用户中心"
+	desc: "用户中心服务"
+	author: "Alex"
+	email: "276558492@qq.com"
+	version: "v1"
+)
+
+import (
+	"user/userCenter.api"
+)
+
+@server(
+	group: auth
+	prefix : v1/auth
+)
+service usercenter {
+	@doc "用户账号密码登录"
+	@handler login
+	post /login (LoginRequest) returns (LoginResponse)
+}
