@@ -1,0 +1,15 @@
+Name: cart.rpc
+ListenOn: 0.0.0.0:8901
+Etcd:
+  Hosts:
+  - 127.0.0.1:2379
+  Key: cart.rpc
+
+
+Mysql:
+  DataSource: root:123456@tcp(127.0.0.1:3306)/go_zero_tutorial?charset=utf8mb4&parseTime=true&loc=Asia%2FShanghai
+
+CacheRedis:
+  - Host: 127.0.0.1:6379
+    Pass:
+    Type: node

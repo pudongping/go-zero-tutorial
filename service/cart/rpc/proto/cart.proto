@@ -1,0 +1,20 @@
+syntax = "proto3";
+
+package proto;
+
+option go_package = "./proto";
+
+service Cart {
+    rpc SearchUserCartTotal (SearchUserCartTotalRequest) returns (SearchUserCartTotalResponse) {}  // 获取当前用户加入的购物车总数
+}
+
+message SearchUserCartTotalRequest {
+    uint64 user_id = 1;  // 当前用户 id
+}
+
+message SearchUserCartTotalResponse {
+    uint64 user_id = 1;  // 当前用户 id
+    string email = 2;  // 当前用户的邮箱
+    string account = 3;  // 当前用户的账号
+    int64 cart_total = 4;  // 当前用户 id 加入的购物车总数
+}

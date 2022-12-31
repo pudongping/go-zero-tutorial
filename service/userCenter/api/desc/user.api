@@ -42,4 +42,8 @@ service usercenter {
 	@doc "我的个人信息"
 	@handler me
 	get /me (AuthMeRequest) returns (AuthMeResponse)
+	
+	@doc "获取当前用户加入的购物车总数"
+	@handler userCartTotal
+	get /userCartTotal (UserCartTotalRequest) returns (UserCartTotalResponse)
 }

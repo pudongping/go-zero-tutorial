@@ -25,3 +25,9 @@ Log:
   # 300MB
   MaxSize: 300
   Rotation: daily
+
+CartRpc:
+  Etcd:
+    Hosts:
+      - 127.0.0.1:2379
+    Key: cart.rpc

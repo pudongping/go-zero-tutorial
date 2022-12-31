@@ -59,3 +59,13 @@ type UserListResponse struct {
 	Result     []UserInfo `json:"results"`
 	Pagination Pagination `json:"pagination"`
 }
+
+type UserCartTotalRequest struct {
+}
+
+type UserCartTotalResponse struct {
+	UserId    uint64 `json:"userId"`
+	Email     string `json:"email"`
+	Account   string `json:"account"`
+	CartTotal int64  `json:"cartTotal"`
+}

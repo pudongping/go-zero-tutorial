@@ -41,6 +41,11 @@ func RegisterHandlers(server *rest.Server, serverCtx *svc.ServiceContext) {
 					Path:    "/me",
 					Handler: auth.MeHandler(serverCtx),
 				},
+				{
+					Method:  http.MethodGet,
+					Path:    "/userCartTotal",
+					Handler: auth.UserCartTotalHandler(serverCtx),
+				},
 			}...,
 		),
 		rest.WithJwt(serverCtx.Config.Auth.AccessSecret),
