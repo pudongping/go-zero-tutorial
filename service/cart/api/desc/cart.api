@@ -1,0 +1,26 @@
+syntax = "v1"
+
+info(
+	title: "购物车"
+	desc: "购物车模块"
+	author: "Alex"
+	email: "276558492@qq.com"
+	version: "v1"
+)
+
+import "cart/cart.api"
+
+@server(
+	jwt: Auth
+)
+service cart {
+	@doc "统计当前用户加入购物车数量"
+	@handler searchCartTotal
+	get /carts/:userId/total (SearchCartTotalRequest) returns (SearchCartTotalResponse)
+}
+
+service cart {
+	@doc "获取所有用户的购物车数量（其实用于测试不加 Auth 中间件情况）"
+	@handler cartTotal
+	get /carts/total
+}

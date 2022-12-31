@@ -1,0 +1,8 @@
+Name: cart
+Host: 0.0.0.0
+Port: 8802
+
+Auth:
+  AccessSecret: OD37SfaAd29fZJa4h3ga
+  # jwt token 有效期，单位：秒（1296000s=15days）
+  AccessExpire: 1296000

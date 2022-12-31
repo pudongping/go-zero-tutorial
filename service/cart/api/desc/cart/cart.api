@@ -1,0 +1,12 @@
+type (
+    SearchCartTotalRequest {
+        // 用户账号
+        Account string `form:"account"`
+    }
+
+    SearchCartTotalResponse {
+        UserId int64 `json:"userId"`
+        Account string `json:"account"`  // 用户账号
+        Count int `json:"count"`         // 当前用户账号加入购物车数量
+    }
+)
