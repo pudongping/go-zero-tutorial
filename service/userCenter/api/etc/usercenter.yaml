@@ -12,3 +12,16 @@ Auth:
   AccessSecret: dfajosfdjoaafda
   # jwt token 有效期，单位：秒
   AccessExpire: 7200
+
+Log:
+  Mode: file
+  Encoding: plain
+  TimeFormat: 2006-01-02 15:04:05
+  Path: runtime/logs
+  Level: debug
+  Compress: true
+  KeepDays: 15
+  MaxBackups: 7
+  # 300MB
+  MaxSize: 300
+  Rotation: daily

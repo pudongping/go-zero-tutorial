@@ -54,7 +54,7 @@ func (l *LoginLogic) Login(req *types.LoginRequest) (resp *types.LoginResponse, 
 	}
 
 	resp = &types.LoginResponse{
-		LoginUserInfo: types.LoginUserInfo{
+		UserInfo: types.UserInfo{
 			UserId:    int(userInfo.UserId),
 			Email:     userInfo.Email,
 			Name:      userInfo.Name,

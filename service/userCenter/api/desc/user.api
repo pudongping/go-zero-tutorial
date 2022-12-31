@@ -12,12 +12,33 @@ import (
 	"user/userCenter.api"
 )
 
+// do not need login
 @server(
 	group: auth
-	prefix : v1/auth
+	prefix: v1/auth
 )
 service usercenter {
+	@doc "注册"
+	@handler register
+	post /register (RegisterRequest) returns (RegisterResponse)
+	
 	@doc "用户账号密码登录"
 	@handler login
 	post /login (LoginRequest) returns (LoginResponse)
+	
+	@doc "用户列表"
+	@handler user
+	get /userLists (UserListRequest) returns (UserListResponse)
+}
+
+// need login
+@server(
+	jwt: Auth
+	group: auth
+	prefix: v1/auth
+)
+service usercenter {
+	@doc "我的个人信息"
+	@handler me
+	get /me (AuthMeRequest) returns (AuthMeResponse)
 }

@@ -1,23 +1,68 @@
+type Pagination {
+    Total int64 `json:"total"`        // 数据总条数
+    Page int64 `json:"page"`          // 当前请求页码
+    PerPage int64 `json:"perPage"`    // 每页显示数
+    LastPage int64 `json:"lastPage"`  // 最大页码（最后一页）
+}
+
+// 用户信息
+type UserInfo {
+    UserId int `json:"userId"`
+    Email string `json:"email"`
+    Name string `json:"name"`
+    Password string `json:"password"`
+    Gender int8 `json:"gender"`
+    CreatedAt int `json:"createdAt"`
+    UpdatedAt int `json:"updatedAt"`
+}
+
+// 注册
+type (
+    RegisterRequest {
+        Account string `json:"account"`
+        Password string `json:"password"`
+    }
+    RegisterResponse {
+        AccessToken string `json:"accessToken"`
+        AccessExpire int64 `json:"accessExpire"`
+        RefreshTime int64 `json:"refreshTime"`
+    }
+)
+
+// 登录
 type (
     LoginRequest {
         Account string `form:"account"`
         Password string `form:"password"`
     }
 
-    LoginUserInfo {
-        UserId int `json:"userId"`
-        Email string `json:"email"`
-        Name string `json:"name"`
-        Password string `json:"password"`
-        Gender int8 `json:"gender"`
-        CreatedAt int `json:"createdAt"`
-        UpdatedAt int `json:"updatedAt"`
-    }
-
     LoginResponse {
-        LoginUserInfo LoginUserInfo `json:"loginUserInfo"`
+        UserInfo UserInfo `json:"userInfo"`
         AccessToken string `json:"accessToken"`
         AccessExpire int64 `json:"accessExpire"`
         RefreshTime int64 `json:"refreshTime"`
+    }
+)
+
+// 个人信息
+type (
+    AuthMeRequest {
+    }
+    AuthMeResponse {
+        UserInfo UserInfo `json:"userInfo"`
+    }
+)
+
+// 用户列表
+type (
+    UserListRequest {
+        Keyword string `form:"keyword,optional"`
+        Page int64 `form:"page,optional,default=1"`
+        PerPage int64 `form:"perPage,optional,default=10,range=[1:200]"`
+        OrderBy string `form:"orderBy,optional"`
+    }
+    UserListResponse {
+        Result []UserInfo `json:"results"`
+        Pagination Pagination `json:"pagination"`
     }
 )
