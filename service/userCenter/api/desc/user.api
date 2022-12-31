@@ -36,6 +36,7 @@ service usercenter {
 	jwt: Auth
 	group: auth
 	prefix: v1/auth
+	middleware: AuthUserMiddleware  // 获取用户信息中间件
 )
 service usercenter {
 	@doc "我的个人信息"

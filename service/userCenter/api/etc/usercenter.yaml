@@ -9,9 +9,9 @@ CacheRedis:
   - Host: 127.0.0.1:6379
 
 Auth:
-  AccessSecret: dfajosfdjoaafda
-  # jwt token 有效期，单位：秒
-  AccessExpire: 7200
+  AccessSecret: OD37SfaAd29fZJa4h3ga
+  # jwt token 有效期，单位：秒（1296000s=15days）
+  AccessExpire: 1296000
 
 Log:
   Mode: file
