@@ -21,10 +21,14 @@ type ServiceContext struct {
 func NewServiceContext(c config.Config) *ServiceContext {
 	mysqlConn := sqlx.NewMysql(c.Mysql.DataSource)
 
+	// cart rpc 连接方式
+	cartRpcClient1 := zrpc.MustNewClient(c.CartRpc) // etcd 服务发现
+	// cartRpcClient2, _ := zrpc.NewClientWithTarget("0.0.0.0:8901") // ip 直连模式
+
 	return &ServiceContext{
 		Config:             c,
 		UserModel:          model.NewUserModel(mysqlConn, c.CacheRedis),
 		AuthUserMiddleware: middleware.NewAuthUserMiddleware().Handle,
-		CartRpc:            cart.NewCart(zrpc.MustNewClient(c.CartRpc)),
+		CartRpc:            cart.NewCart(cartRpcClient1),
 	}
 }
