@@ -25,7 +25,7 @@ type SearchUserCartTotalRequest struct {
 	sizeCache     protoimpl.SizeCache
 	unknownFields protoimpl.UnknownFields
 
-	UserId uint64 `protobuf:"varint,1,opt,name=user_id,json=userId,proto3" json:"user_id,omitempty"` // 当前用户 id
+	UserId uint64 `protobuf:"varint,1,opt,name=user_id,json=userId,proto3" json:"user_id"` // 当前用户 id
 }
 
 func (x *SearchUserCartTotalRequest) Reset() {
@@ -72,10 +72,10 @@ type SearchUserCartTotalResponse struct {
 	sizeCache     protoimpl.SizeCache
 	unknownFields protoimpl.UnknownFields
 
-	UserId    uint64 `protobuf:"varint,1,opt,name=user_id,json=userId,proto3" json:"user_id,omitempty"`          // 当前用户 id
-	Email     string `protobuf:"bytes,2,opt,name=email,proto3" json:"email,omitempty"`                           // 当前用户的邮箱
-	Account   string `protobuf:"bytes,3,opt,name=account,proto3" json:"account,omitempty"`                       // 当前用户的账号
-	CartTotal int64  `protobuf:"varint,4,opt,name=cart_total,json=cartTotal,proto3" json:"cart_total,omitempty"` // 当前用户 id 加入的购物车总数
+	UserId    uint64 `protobuf:"varint,1,opt,name=user_id,json=userId,proto3" json:"user_id"`          // 当前用户 id
+	Email     string `protobuf:"bytes,2,opt,name=email,proto3" json:"email"`                           // 当前用户的邮箱
+	Account   string `protobuf:"bytes,3,opt,name=account,proto3" json:"account"`                       // 当前用户的账号
+	CartTotal int64  `protobuf:"varint,4,opt,name=cart_total,json=cartTotal,proto3" json:"cart_total"` // 当前用户 id 加入的购物车总数
 }
 
 func (x *SearchUserCartTotalResponse) Reset() {

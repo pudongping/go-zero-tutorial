@@ -36,6 +36,8 @@ func (l *UserCartTotalLogic) UserCartTotal(req *types.UserCartTotalRequest) (res
 
 	// cart rpc
 	cartResp, err := l.svcCtx.CartRpc.SearchUserCartTotal(l.ctx, &proto.SearchUserCartTotalRequest{UserId: uint64(uid)})
+	jResp, _ := json.MarshalIndent(cartResp, "", "  ")
+	logx.Infof("原始 cart rpc 返回结果 json 格式为： %v \n", string(jResp))
 	logx.Infof("cart rpc 返回的结果为： %+v", cartResp)
 	if err != nil {
 		return nil, err
