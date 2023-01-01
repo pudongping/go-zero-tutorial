@@ -1,10 +1,18 @@
+# rpc 配置文档： https://go-zero.dev/cn/docs/configuration/rpc
+
 Name: cart.rpc
+# rpc 监听地址和端口，如：127.0.0.1:8888
 ListenOn: 0.0.0.0:8901
+# 超时控制，单位：毫秒
+Timeout: 2000
+# cpu 降载阈值，默认 900，可允许设置范围 0 到 1000
+CpuThreshold: 900
+
+# etcd 相关配置
 Etcd:
   Hosts:
   - 127.0.0.1:2379
   Key: cart.rpc
-
 
 Mysql:
   DataSource: root:123456@tcp(127.0.0.1:3306)/go_zero_tutorial?charset=utf8mb4&parseTime=true&loc=Asia%2FShanghai
