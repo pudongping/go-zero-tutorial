@@ -40,6 +40,8 @@ func main() {
 
 	handler.RegisterHandlers(server, ctx)
 
+	// logx.DisableStat()  // 关闭输出的统计 stat 日志
+
 	fmt.Printf("Starting server at %s:%d...\n", c.Host, c.Port)
 	server.Start()
 }
