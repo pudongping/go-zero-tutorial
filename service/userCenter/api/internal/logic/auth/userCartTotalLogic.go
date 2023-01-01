@@ -5,7 +5,7 @@ import (
 	"encoding/json"
 	"fmt"
 
-	"go-zero-tutorial/service/cart/rpc/proto"
+	"go-zero-tutorial/service/cart/rpc/cartRpc/proto"
 	"go-zero-tutorial/service/userCenter/api/internal/svc"
 	"go-zero-tutorial/service/userCenter/api/internal/types"
 

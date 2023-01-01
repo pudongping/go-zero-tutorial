@@ -6,7 +6,7 @@ package cart
 import (
 	"context"
 
-	"go-zero-tutorial/service/cart/rpc/proto"
+	"go-zero-tutorial/service/cart/rpc/cartRpc/proto"
 
 	"github.com/zeromicro/go-zero/zrpc"
 	"google.golang.org/grpc"

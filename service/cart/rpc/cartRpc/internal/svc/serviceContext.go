@@ -2,7 +2,7 @@ package svc
 
 import (
 	"go-zero-tutorial/service/cart/model"
-	"go-zero-tutorial/service/cart/rpc/internal/config"
+	"go-zero-tutorial/service/cart/rpc/cartRpc/internal/config"
 
 	"github.com/zeromicro/go-zero/core/stores/sqlx"
 )

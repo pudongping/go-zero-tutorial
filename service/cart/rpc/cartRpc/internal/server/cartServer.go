@@ -6,9 +6,9 @@ package server
 import (
 	"context"
 
-	"go-zero-tutorial/service/cart/rpc/internal/logic"
-	"go-zero-tutorial/service/cart/rpc/internal/svc"
-	"go-zero-tutorial/service/cart/rpc/proto"
+	"go-zero-tutorial/service/cart/rpc/cartRpc/internal/logic"
+	"go-zero-tutorial/service/cart/rpc/cartRpc/internal/svc"
+	"go-zero-tutorial/service/cart/rpc/cartRpc/proto"
 )
 
 type CartServer struct {

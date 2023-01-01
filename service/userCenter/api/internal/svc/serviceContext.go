@@ -1,7 +1,7 @@
 package svc
 
 import (
-	"go-zero-tutorial/service/cart/rpc/cart"
+	"go-zero-tutorial/service/cart/rpc/cartRpc/cart"
 	"go-zero-tutorial/service/userCenter/api/internal/config"
 	"go-zero-tutorial/service/userCenter/api/internal/middleware"
 	"go-zero-tutorial/service/userCenter/model"

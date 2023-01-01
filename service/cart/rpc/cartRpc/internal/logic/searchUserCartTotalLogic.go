@@ -3,8 +3,8 @@ package logic
 import (
 	"context"
 
-	"go-zero-tutorial/service/cart/rpc/internal/svc"
-	"go-zero-tutorial/service/cart/rpc/proto"
+	"go-zero-tutorial/service/cart/rpc/cartRpc/internal/svc"
+	"go-zero-tutorial/service/cart/rpc/cartRpc/proto"
 
 	"github.com/zeromicro/go-zero/core/logx"
 )

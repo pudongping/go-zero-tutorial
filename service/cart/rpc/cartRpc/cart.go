@@ -4,10 +4,10 @@ import (
 	"flag"
 	"fmt"
 
-	"go-zero-tutorial/service/cart/rpc/internal/config"
-	"go-zero-tutorial/service/cart/rpc/internal/server"
-	"go-zero-tutorial/service/cart/rpc/internal/svc"
-	"go-zero-tutorial/service/cart/rpc/proto"
+	"go-zero-tutorial/service/cart/rpc/cartRpc/internal/config"
+	"go-zero-tutorial/service/cart/rpc/cartRpc/internal/server"
+	"go-zero-tutorial/service/cart/rpc/cartRpc/internal/svc"
+	"go-zero-tutorial/service/cart/rpc/cartRpc/proto"
 
 	"github.com/zeromicro/go-zero/core/conf"
 	"github.com/zeromicro/go-zero/core/service"
