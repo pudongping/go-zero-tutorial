@@ -34,12 +34,11 @@ func (l *LoginLogic) Login(req *types.LoginRequest) (resp *types.LoginResponse, 
 	}
 
 	userInfo, err := l.svcCtx.UserModel.FindOneByEmail(l.ctx, req.Account)
-	switch err {
-	case nil:
-	case model.ErrNotFound:
-		return nil, errors.New("用户名不存在")
-	default:
+	if err != nil && err != model.ErrNotFound {
 		return nil, err
+	}
+	if userInfo == nil {
+		return nil, errors.New("用户名不存在")
 	}
 
 	if userInfo.Password != req.Password {
