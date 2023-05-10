@@ -46,19 +46,24 @@ Log:
 #  ServiceName:
   # 日志模式，console-输出到 console，file-输出到当前服务器（容器）文件，volume-输出docker挂在文件内
   Mode: file
+  # 日志输出格式：json、plain
   Encoding: plain
+  # 日志时间格式
   TimeFormat: 2006-01-02 15:04:05
   # 日志存储路径
   Path: runtime/logs
-  # 日志级别
+  # 日志级别：debug、info、error、severe
   Level: debug
   # 是否开启 gzip 压缩
   Compress: true
   # 日志保留天数
   KeepDays: 15
+  # 表示将保留多少个备份日志文件（只有当 Rotation 为 size 时，才会生效。设置为 0 时，表示永久生效。
+  # 如果达到了日志保留天数，就算是设置成 0 那么也会被删除）
   MaxBackups: 7
-  # 300MB
+  # 表示写日志文件占用的大小上限。（只有当 Rotation 为 size 时，才会生效。设置为 0 时，表示无限制，单位为：MB）eg：300MB
   MaxSize: 300
+  # 轮转规则：daily、size
   Rotation: daily
 
 # 购物车 grpc 服务相关配置信息
@@ -67,3 +72,7 @@ CartRpc:
     Hosts:
       - 127.0.0.1:2379
     Key: cart.rpc
+  # 当依赖的服务未启动时，自身服务不受依赖服务影响（为 false 时，则必须依赖的服务全部启动，自身服务才可以启动）
+  NonBlock: true
+  # 客户端超时时间，单位：毫秒。默认为：2000ms。设置为 0 时表示永不超时
+  Timeout: 2000
