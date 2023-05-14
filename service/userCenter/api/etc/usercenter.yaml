@@ -1,7 +1,7 @@
 # api 配置文档： https://go-zero.dev/cn/docs/configuration/api
 # 服务名称
 Name: userCenter
-# 服务环境，dev-开发环境，test-测试环境，pre-预发环境，pro-正式环境，默认 pro
+# 服务环境，dev-开发环境，test-测试环境，rt-回归测试，pre-预发环境，pro-正式环境，默认 pro
 Mode: dev
 # http 监听 ip，默认 0.0.0.0
 Host: 0.0.0.0
@@ -67,11 +67,14 @@ Log:
   Rotation: daily
 
 # 购物车 grpc 服务相关配置信息
-CartRpc:
+CartRpcConf:
   Etcd:
     Hosts:
       - 127.0.0.1:2379
     Key: cart.rpc
+  # 也可以通过 endpoints 直连的方式连接（端口为 rpc 服务端监听的端口）
+#  Endpoints:
+#    - 127.0.0.1:8901
   # 当依赖的服务未启动时，自身服务不受依赖服务影响（为 false 时，则必须依赖的服务全部启动，自身服务才可以启动）
   NonBlock: true
   # 客户端超时时间，单位：毫秒。默认为：2000ms。设置为 0 时表示永不超时

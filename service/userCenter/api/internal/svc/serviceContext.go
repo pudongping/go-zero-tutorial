@@ -30,8 +30,8 @@ func NewServiceContext(c config.Config) *ServiceContext {
 	})
 
 	// cart rpc 连接方式
-	cartRpcClient1 := zrpc.MustNewClient(c.CartRpcConf) // etcd 服务发现
-	// cartRpcClient2, _ := zrpc.NewClientWithTarget("0.0.0.0:8901") // ip 直连模式
+	cartRpcClient1 := zrpc.MustNewClient(c.CartRpcConf) // 1、etcd 服务发现 2、endpoints 直连方式
+	// cartRpcClient2, _ := zrpc.NewClientWithTarget("0.0.0.0:8901") // 3、ip 直连模式
 
 	return &ServiceContext{
 		Config:             c,
