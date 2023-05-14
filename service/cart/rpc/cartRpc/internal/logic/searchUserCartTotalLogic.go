@@ -2,6 +2,7 @@ package logic
 
 import (
 	"context"
+	"fmt"
 
 	"go-zero-tutorial/service/cart/rpc/cartRpc/internal/svc"
 	"go-zero-tutorial/service/cart/rpc/cartRpc/proto"
@@ -24,6 +25,7 @@ func NewSearchUserCartTotalLogic(ctx context.Context, svcCtx *svc.ServiceContext
 }
 
 func (l *SearchUserCartTotalLogic) SearchUserCartTotal(in *proto.SearchUserCartTotalRequest) (*proto.SearchUserCartTotalResponse, error) {
+	fmt.Println("SearchUserCartTotalLogic SearchUserCartTotal Fun")
 	user, err := l.svcCtx.UserModel.FindOne(l.ctx, int64(in.UserId))
 	if err != nil {
 		return nil, err

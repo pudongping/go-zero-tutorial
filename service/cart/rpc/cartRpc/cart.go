@@ -1,6 +1,7 @@
 package main
 
 import (
+	"context"
 	"flag"
 	"fmt"
 
@@ -34,6 +35,23 @@ func main() {
 	})
 	defer s.Stop()
 
+	// grpc 服务端拦截器
+	s.AddUnaryInterceptors(TestServerInterceptor)
+
 	fmt.Printf("Starting rpc server at %s...\n", c.ListenOn)
 	s.Start()
+}
+
+func TestServerInterceptor(ctx context.Context, req interface{}, info *grpc.UnaryServerInfo, handler grpc.UnaryHandler) (resp interface{}, err error) {
+	fmt.Printf("grpc 服务端拦截器 start ====> \n")
+	fmt.Printf("req ====> %+v \n", req)
+	fmt.Printf("info ====> %+v \n", info)
+	// req ====> user_id:1
+	// info ====> &{Server:0xc0004975e0 FullMethod:/proto.Cart/SearchUserCartTotal}
+
+	resp, err = handler(ctx, req)
+
+	fmt.Printf("grpc 服务端拦截器 end ====> \n")
+
+	return
 }
