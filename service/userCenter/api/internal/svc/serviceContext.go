@@ -14,6 +14,7 @@ import (
 	"github.com/zeromicro/go-zero/rest"
 	"github.com/zeromicro/go-zero/zrpc"
 	"google.golang.org/grpc"
+	"google.golang.org/grpc/metadata"
 )
 
 type ServiceContext struct {
@@ -47,6 +48,13 @@ func NewServiceContext(c config.Config) *ServiceContext {
 }
 
 func TestClientInterceptor(ctx context.Context, method string, req, reply interface{}, cc *grpc.ClientConn, invoker grpc.UnaryInvoker, opts ...grpc.CallOption) error {
+
+	// 尝试将值通过 metadata 传递给 rpc 服务端
+	md := metadata.New(map[string]string{
+		"uid": "1688",
+	})
+	ctx = metadata.NewOutgoingContext(ctx, md)
+
 	fmt.Printf("grpc 客户端拦截器 start ====> \n")
 	err := invoker(ctx, method, req, reply, cc, opts...)
 	fmt.Printf("grpc 客户端拦截器 end ====> \n")
