@@ -1,6 +1,9 @@
 package svc
 
 import (
+	"context"
+	"fmt"
+
 	"go-zero-tutorial/service/cart/rpc/cartRpc/cart"
 	"go-zero-tutorial/service/userCenter/api/internal/config"
 	"go-zero-tutorial/service/userCenter/api/internal/middleware"
@@ -10,6 +13,7 @@ import (
 	"github.com/zeromicro/go-zero/core/stores/sqlx"
 	"github.com/zeromicro/go-zero/rest"
 	"github.com/zeromicro/go-zero/zrpc"
+	"google.golang.org/grpc"
 )
 
 type ServiceContext struct {
@@ -30,7 +34,7 @@ func NewServiceContext(c config.Config) *ServiceContext {
 	})
 
 	// cart rpc 连接方式
-	cartRpcClient1 := zrpc.MustNewClient(c.CartRpcConf) // 1、etcd 服务发现 2、endpoints 直连方式
+	cartRpcClient1 := zrpc.MustNewClient(c.CartRpcConf, zrpc.WithUnaryClientInterceptor(TestClientInterceptor)) // 1、etcd 服务发现 2、endpoints 直连方式
 	// cartRpcClient2, _ := zrpc.NewClientWithTarget("0.0.0.0:8901") // 3、ip 直连模式
 
 	return &ServiceContext{
@@ -40,4 +44,12 @@ func NewServiceContext(c config.Config) *ServiceContext {
 		AuthUserMiddleware: middleware.NewAuthUserMiddleware().Handle,
 		CartRpcClient:      cart.NewCart(cartRpcClient1),
 	}
+}
+
+func TestClientInterceptor(ctx context.Context, method string, req, reply interface{}, cc *grpc.ClientConn, invoker grpc.UnaryInvoker, opts ...grpc.CallOption) error {
+	fmt.Printf("grpc 客户端拦截器 start ====> \n")
+	err := invoker(ctx, method, req, reply, cc, opts...)
+	fmt.Printf("grpc 客户端拦截器 end ====> \n")
+
+	return err
 }
