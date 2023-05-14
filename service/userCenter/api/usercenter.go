@@ -22,6 +22,9 @@ func main() {
 
 	var c config.Config
 	conf.MustLoad(*configFile, &c)
+	// yaml 配置文件中使用环境变量时，则需要在使用 `conf.UseEnv()`
+	// yaml 中使用环境变量示例：Name: ${ProjectName}
+	// conf.MustLoad(*configFile, &c, conf.UseEnv())
 
 	server := rest.MustNewServer(
 		c.RestConf,
