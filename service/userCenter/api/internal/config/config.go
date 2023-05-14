@@ -20,7 +20,7 @@ type Config struct {
 		AccessExpire int64
 	}
 
-	CartRpc zrpc.RpcClientConf // 购物车
+	CartRpcConf zrpc.RpcClientConf // 购物车
 
 	Redis redis.RedisConf
 }
