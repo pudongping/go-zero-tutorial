@@ -19,8 +19,8 @@ type UserInfo struct {
 }
 
 type RegisterRequest struct {
-	Account  string `json:"account"`
-	Password string `json:"password"`
+	Account  string `json:"account" validate:"required,gte=0,lte=40"`
+	Password string `json:"password" validate:"required,gte=0,lte=20"`
 }
 
 type RegisterResponse struct {

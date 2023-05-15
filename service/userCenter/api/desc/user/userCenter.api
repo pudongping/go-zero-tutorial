@@ -19,8 +19,8 @@ type UserInfo {
 // 注册
 type (
     RegisterRequest {
-        Account string `json:"account"`
-        Password string `json:"password"`
+        Account string `json:"account" validate:"required,gte=0,lte=40"`
+        Password string `json:"password" validate:"required,gte=0,lte=20"`
     }
     RegisterResponse {
         AccessToken string `json:"accessToken"`

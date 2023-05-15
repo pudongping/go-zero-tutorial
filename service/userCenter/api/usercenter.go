@@ -5,6 +5,7 @@ import (
 	"fmt"
 	"net/http"
 
+	commonMiddleware "go-zero-tutorial/common/middleware"
 	"go-zero-tutorial/service/userCenter/api/internal/config"
 	"go-zero-tutorial/service/userCenter/api/internal/handler"
 	"go-zero-tutorial/service/userCenter/api/internal/middleware"
@@ -44,6 +45,7 @@ func main() {
 		}
 	})
 	server.Use(new(middleware.CommonHeader).AddHeader())
+	server.Use(commonMiddleware.NewTranslationsMiddleware().Handle) // 全局翻译中间件
 
 	handler.RegisterHandlers(server, ctx)
 
