@@ -5,6 +5,7 @@ import (
 	"fmt"
 	"net/http"
 
+	"go-zero-tutorial/common/httpRest"
 	commonMiddleware "go-zero-tutorial/common/middleware"
 	"go-zero-tutorial/service/userCenter/api/internal/config"
 	"go-zero-tutorial/service/userCenter/api/internal/handler"
@@ -31,6 +32,9 @@ func main() {
 		c.RestConf,
 		rest.WithCors(), // 设置跨域
 		// rest.WithCors("https://www.baidu.com"), // 设置单个域名跨域
+		rest.WithNotFoundHandler(httpRest.NotFoundHandler()),        // 处理 404 情况
+		rest.WithNotAllowedHandler(httpRest.NotAllowedHandler()),    // 处理请求方法不对时的调用
+		rest.WithUnauthorizedCallback(httpRest.UnauthorizedHandler), // 接口没有认证成功时
 	)
 	defer server.Stop()
 
